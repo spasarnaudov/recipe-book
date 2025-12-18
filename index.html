@@ -5,42 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Recipe Book</title>
   <style>
-    body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f9f9f9; color: #333; line-height: 1.6; }
-    header { background: #d35400; color: white; padding: 2rem; text-align: center; margin-bottom: 30px; }
-    .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+    body { font-family: sans-serif; margin: 0; background: #fff; }
+    header { background: #d35400; color: white; padding: 10px; text-align: center; }
     
-    /* Accordion Styles */
-    .recipe-card { background: #fff; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); overflow: hidden; border-left: 5px solid #d35400; }
+    .recipe-card { border-bottom: 1px solid #ddd; }
     
     .recipe-header { 
-      background: #fff; padding: 15px 25px; cursor: pointer; display: flex; 
-      justify-content: space-between; align-items: center; transition: background 0.3s;
+      padding: 10px; cursor: pointer; display: flex; 
+      justify-content: space-between; align-items: center; background: #fdfdfd;
     }
-    .recipe-header:hover { background: #fff5eb; }
-    .recipe-header h2 { color: #d35400; margin: 0; font-size: 1.3rem; }
-    
-    /* Collapse Button Indicator */
-    .toggle-icon::before { content: '+'; font-size: 1.5rem; color: #d35400; font-weight: bold; }
+    .recipe-header h2 { color: #d35400; margin: 0; font-size: 1.1rem; }
+    .toggle-icon::before { content: '+'; font-weight: bold; color: #d35400; }
     .active .toggle-icon::before { content: '−'; }
 
     /* Hidden Content */
-    .recipe-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding: 0 25px; }
-    .active .recipe-content { max-height: 2000px; padding: 20px 25px; border-top: 1px solid #eee; }
+    .recipe-content { display: none; padding: 10px; }
+    .active .recipe-content { display: block; }
 
-    .ingredients-list { list-style: none; padding: 0; margin-bottom: 20px; }
-    .ingredients-list li { padding: 5px 0; border-bottom: 1px dashed #eee; font-size: 0.95rem; }
-    h4 { color: #e67e22; margin: 15px 0 10px; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
-    .steps { white-space: pre-line; background: #fffaf5; padding: 15px; border-radius: 5px; }
+    /* Compact list and text */
+    h4 { margin: 5px 0; font-size: 0.9rem; color: #e67e22; }
+    p, ul { margin: 0 0 10px 0; padding: 0; list-style: none; font-size: 0.9rem; }
+    .steps { white-space: pre-line; }
   </style>
 </head>
 <body>
 
   <header>
     <h1>От рецептите на мама</h1>
-    <p>Любими домашни рецепти от Шев Спас Арнаудов</p>
+    <p style="margin:0">Шев Спас Арнаудов</p>
   </header>
 
-  <div class="container" id="recipe-container"></div>
+  <div id="recipe-container"></div>
 
   <script>
     const recipes = [
@@ -50,29 +45,27 @@
           { subtitle: "Продукти", items: ["10 литра дом. сок", "1,5 каф.ч. брашно", "200 мл. оцет", "2 ч.л. червен пипер", "5-6 с.л. сол", "0.5 кг. захар"] },
           { subtitle: "Подправки", items: ["1 каф.л. синап", "1 ч.л. кимион", "2 ч.л. чубрица", "1 ч.л. индийско орехче", "1 каф.л. черен пипер"] }
         ],
-        steps: "Всичко се поставя и разбърква добре в голям съд.\nБърка се непрестанно, докато не започнат да излизат балончета.\nСлед това се добавя подправката и се бърка още 10-15 минути."
+        steps: "Всичко се поставя и разбърква добре в голям съд.\nБърка се непрестанно до балончета.\nДобавя се подправката и се бърка още 10-15 мин."
       },
       {
         title: "Палачинки с мариновани круши",
         sections: [
-          { subtitle: "Тесто", items: ["360 мл прясно мляко", "3 яйца", "3 жълтъка", "40 г захар", "85 г масло", "175 г брашно", "10 мл коняк"] },
-          { subtitle: "За крушите", items: ["2 бр. круши", "100 мл бяло вино", "80 г захар", "1 портокал", "Кардамон"] }
+          { subtitle: "Тесто", items: ["360 мл мляко", "3 яйца", "3 жълтъка", "40 г захар", "175 г брашно", "10 мл коняк"] },
+          { subtitle: "За крушите", items: ["2 бр. круши", "100 мл вино", "80 г захар", "1 портокал", "Кардамон"] }
         ],
-        steps: "1. Нарязаните круши се мариноват в топла марината.\n2. Приготвя се палачинковото тесто и се прецежда.\n3. Палачинки се изпържват.\n4. Оформят се с плънката и се завързват с портокалова кора."
+        steps: "Мариновайте крушите.\nПригответе и изпържете палачинките.\nНапълнете и завържете с портокалова кора."
       }
     ];
 
     const container = document.getElementById('recipe-container');
 
-    recipes.forEach((recipe, index) => {
+    recipes.forEach(recipe => {
       const card = document.createElement('div');
       card.className = 'recipe-card';
       
       let sectionsHtml = recipe.sections.map(sec => `
         <h4>${sec.subtitle}:</h4>
-        <ul class="ingredients-list">
-          ${sec.items.map(item => `<li>${item}</li>`).join('')}
-        </ul>
+        <ul>${sec.items.map(item => `<li>${item}</li>`).join('')}</ul>
       `).join('');
 
       card.innerHTML = `
@@ -92,14 +85,8 @@
     function toggleRecipe(header) {
       const card = header.parentElement;
       const isOpen = card.classList.contains('active');
-
-      // Close all other recipes
       document.querySelectorAll('.recipe-card').forEach(c => c.classList.remove('active'));
-
-      // If the clicked one wasn't open, open it
-      if (!isOpen) {
-        card.classList.add('active');
-      }
+      if (!isOpen) card.classList.add('active');
     }
   </script>
 </body>
