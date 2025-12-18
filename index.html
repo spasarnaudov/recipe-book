@@ -1,87 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="description" content="Delicious homemade recipes — dessert, cakes, and more! My personal recipe book.">
-  <meta name="keywords" content="recipes, cooking, food, homemade, dessert, рецепри, готвене, храна, домашни, десерти">
-  <meta name="author" content="Шев Спас Арнаудов">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Recipe Book</title>
   <style>
-    body { font-family: sans-serif; margin: 20px; background: #fdfdfd; }
-    header { text-align: center; }
-    .recipe {
-      background: #fff; border-radius: 10px; padding: 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin-bottom: 20px;
-    }
-    h2 { color: #d35400; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background: #f9f9f9; color: #333; line-height: 1.6; }
+    header { background: #d35400; color: white; padding: 2rem; text-align: center; margin-bottom: 30px; }
+    .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+    .recipe-card { background: #fff; border-radius: 12px; padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 40px; border-left: 5px solid #d35400; }
+    h2 { color: #d35400; margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+    h4 { color: #e67e22; margin-bottom: 10px; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; }
+    .ingredients-list { margin-bottom: 20px; list-style: none; padding: 0; }
+    .ingredients-list li { padding: 5px 0; border-bottom: 1px dashed #eee; }
+    .steps { white-space: pre-line; }
   </style>
 </head>
 <body>
+
   <header>
     <h1>От рецептите на мама</h1>
-	<p>Любими домашни рецепти от Шев Спас Арнаудов</p>
+    <p>Любими домашни рецепти от Шев Спас Арнаудов</p>
   </header>
 
-  <div>
-    <h2>Кетчуп</h2>
-    <h4>Продукти:</h4>
-	<p>10 литра дом. сок</p>
-	<p>1,5 каф.ч. брашно разбито във вода</p>
-	<p>200 мл. оцет</p>
-	<p>2 ч.л. червен пипер</p>
-	<p>5-6 с.л. сол</p>
-	<p>0.5 кг. захар</p>
-    <h4>Подправка:</h4>
-    <p>1 каф.л. синап.</p>
-    <p>1 ч.л. кимион.</p>
-    <p>2 ч.л. чубрица.</p>
-    <p>1 ч.л. индийско орехче.</p>
-    <p>1 каф.л. черен пипер.</p>
-    <h4>Стъпки:</h4>
-    <p>Всичко се поставя и разбърква добре в голям съд.</p>
-    <p>Бърка се непрестанно, докато не започнат да илизат балончта.</p>
-    <p>След това се добавя подправката и се бърка още 10-15 минути.</p>
+  <div class="container" id="recipe-container">
+    <!-- Recipes will be injected here by JavaScript -->
   </div>
 
-  <div class="recipe">
-  	<h2>Палачинки с мариновани круши</h2>
+  <script>
+    // 1. ADD YOUR RECIPES HERE
+    const recipes = [
+      {
+        title: "Кетчуп",
+        sections: [
+          { subtitle: "Продукти", items: ["10 литра дом. сок", "1,5 каф.ч. брашно", "200 мл. оцет", "2 ч.л. червен пипер", "5-6 с.л. сол", "0.5 кг. захар"] },
+          { subtitle: "Подправки", items: ["1 каф.л. синап", "1 ч.л. кимион", "2 ч.л. чубрица", "1 ч.л. индийско орехче", "1 каф.л. черен пипер"] }
+        ],
+        steps: "Всичко се поставя и разбърква добре в голям съд.\nБърка се непрестанно, докато не започнат да излизат балончета.\nСлед това се добавя подправката и се бърка още 10-15 минути."
+      },
+      {
+        title: "Палачинки с мариновани круши",
+        sections: [
+          { subtitle: "Тесто", items: ["360 мл прясно мляко", "3 яйца", "3 жълтъка", "40 г захар", "85 г масло", "175 г брашно", "10 мл коняк"] },
+          { subtitle: "За крушите", items: ["2 бр. круши", "100 мл бяло вино", "80 г захар", "1 портокал", "Кардамон"] }
+        ],
+        steps: "1. Нарязаните круши се мариноват в топла марината.\n2. Приготвя се палачинковото тесто и се прецежда.\n3. Палачинките се изпържват.\n4. Оформят се с плънката и се завързват с портокалова кора."
+      }
+    ];
 
-  	<h4>За тестото за палачинки:</h4>
-  	<p>360 мл прясно мляко</p>
-  	<p>3 яйца</p>
-  	<p>3 жълтъка</p>
-  	<p>40 г захар</p>
-  	<p>2 г сол</p>
-  	<p>85 г масло</p>
-  	<p>175 г брашно</p>
-  	<p>10 мл коняк</p>
-  	<p>Ванилия</p>
+    // 2. LOGIC TO RENDER RECIPES
+    const container = document.getElementById('recipe-container');
 
-  	<h4>За крушите:</h4>
-  	<p>2 бр. круши</p>
-  	<p>100 мл бяло вино</p>
-  	<p>80 г захар</p>
-  	<p>1 портокал</p>
-  	<p>Кардамон</p>
+    recipes.forEach(recipe => {
+      const card = document.createElement('div');
+      card.className = 'recipe-card';
 
-  	<h4>За гарниране:</h4>
-  	<p>2 портокала</p>
+      let sectionsHtml = '';
+      recipe.sections.forEach(sec => {
+        sectionsHtml += `
+          <h4>${sec.subtitle}:</h4>
+          <ul class="ingredients-list">
+            ${sec.items.map(item => `<li>${item}</li>`).join('')}
+          </ul>
+        `;
+      });
 
-  	<h4>Начин на приготвяне:</h4>
-  	<p>Обелените и нарязани на кубчета круши се мариноват в топла марината от предвидените продукти.</p>
-  	<p>От продуктите за тестото се приготвя рядко палачинково тесто, което се прецежда.</p>
-  	<p>Палачинките се изпържват.</p>
-  	<p>Оформят се с плънката и се завързват с портокалова кора.</p>
+      card.innerHTML = `
+        <h2>${recipe.title}</h2>
+        ${sectionsHtml}
+        <h4>Начин на приготвяне:</h4>
+        <p class="steps">${recipe.steps}</p>
+      `;
 
-  	<h4>По желание:</h4>
-  	<p>Може да се приготви крем от сирена:</p>
-  	<p>75 г сирене „Бри“ или „Камембер“</p>
-  	<p>50 г крем сирене</p>
-  	<p>50 г животинска сметана</p>
-  	<p>25 г пудра захар</p>
-  	<p>Всичко се пасира.</p>
-  </div>
-
+      container.appendChild(card);
+    });
+  </script>
 </body>
 </html>
