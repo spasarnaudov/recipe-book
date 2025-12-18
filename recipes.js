@@ -38,7 +38,7 @@ const recipes = [
         subtitle: "Тесто",
         items: [
           "прясно мляко - 360 мл",
-          "яйца - 3",
+          "яйца - 3 бр",
           "захар - 40 гр",
 		  "сол - 2 гр",
 		  "масло - 85 гр",
@@ -287,3 +287,4 @@ function toggleRecipe(header) {
     card.classList.add("active");
   }
 }
+
