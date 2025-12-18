@@ -1,118 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bg">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Recipe Book</title>
-  <style>
-    body { font-family: sans-serif; margin: 0; background: #fff; }
-    
-    /* Header with picture on left, title on right */
-    header { 
-      background: #8087d9; 
-      color: white; 
-      padding: 15px; 
-      display: flex; 
-      align-items: center; 
-      gap: 15px; /* Space between image and text */
-    }
-    
-    .profile-pic {
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      border: 2px solid white;
-      object-fit: cover;
-      flex-shrink: 0; /* Prevents image from squeezing */
-    }
+  <title>Шеф Мими</title>
 
-    header h1 { 
-      margin: 0; 
-      font-size: 1.4rem; 
-      text-align: left; 
-    }
-
-    /* Recipe Styles */
-    .recipe-card { border-bottom: 1px solid #ddd; }
-    
-    .recipe-header { 
-      padding: 10px; cursor: pointer; display: flex; 
-      justify-content: space-between; align-items: center; background: #fdfdfd;
-    }
-    .recipe-header h2 { color: #8087d9; margin: 0; font-size: 1.1rem; }
-    
-    .toggle-icon::before { content: '+'; font-weight: bold; color: #8087d9; }
-    .active .toggle-icon::before { content: '−'; }
-
-    .recipe-content { display: none; padding: 10px; text-align: left; }
-    .active .recipe-content { display: block; }
-
-    h4 { margin: 5px 0; font-size: 0.9rem; color: #5a60a8; }
-    p, ul { margin: 0 0 10px 0; padding: 0; list-style: none; font-size: 0.9rem; }
-    .steps { white-space: pre-line; }
-  </style>
+  <!-- External CSS -->
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-  <header>
-    <!-- Replace 'your-image.jpg' with your actual image file or URL -->
-    <img src="mimi.jpg" alt="Mimi" class="profile-pic">
-    <h1>На Мими рецептите</h1>
-  </header>
+<header>
+  <img src="mimi.jpg" alt="Mimi" class="profile-pic">
+  <h1>Шеф Мими</h1>
+</header>
 
-  <div id="recipe-container"></div>
+<div id="recipe-container"></div>
 
-  <script>
-    const recipes = [
-      {
-        title: "Кетчуп",
-        sections: [
-          { subtitle: "Продукти", items: ["10 литра дом. сок", "1,5 каф.ч. брашно", "200 мл. оцет", "2 ч.л. червен пипер", "5-6 с.л. сол", "0.5 кг. захар"] },
-          { subtitle: "Подправки", items: ["1 каф.л. синап", "1 ч.л. кимион", "2 ч.л. чубрица", "1 ч.л. индийско орехче", "1 каф.л. черен пипер"] }
-        ],
-        steps: "Всичко се поставя и разбърква добре в голям съд.\nБърка се непрестанно до балончета.\nДобавя се подправката и се бърка още 10-15 мин."
-      },
-      {
-        title: "Палачинки с мариновани круши",
-        sections: [
-          { subtitle: "Тесто", items: ["360 мл мляко", "3 яйца", "3 жълтъка", "40 г захар", "175 г брашно", "10 мл коняк"] },
-          { subtitle: "За крушите", items: ["2 бр. круши", "100 мл вино", "80 г захар", "1 портокал", "Кардамон"] }
-        ],
-        steps: "Мариновайте крушите.\nПригответе и изпържете палачинките.\nНапълнете и завържете с портокалова кора."
-      }
-    ];
+<!-- External JS -->
+<script src="recipes.js"></script>
 
-    const container = document.getElementById('recipe-container');
-
-    recipes.forEach(recipe => {
-      const card = document.createElement('div');
-      card.className = 'recipe-card';
-      
-      let sectionsHtml = recipe.sections.map(sec => `
-        <h4>${sec.subtitle}:</h4>
-        <ul>${sec.items.map(item => `<li>${item}</li>`).join('')}</ul>
-      `).join('');
-
-      card.innerHTML = `
-        <div class="recipe-header" onclick="toggleRecipe(this)">
-          <h2>${recipe.title}</h2>
-          <span class="toggle-icon"></span>
-        </div>
-        <div class="recipe-content">
-          ${sectionsHtml}
-          <h4>Начин на приготвяне:</h4>
-          <p class="steps">${recipe.steps}</p>
-        </div>
-      `;
-      container.appendChild(card);
-    });
-
-    function toggleRecipe(header) {
-      const card = header.parentElement;
-      const isOpen = card.classList.contains('active');
-      document.querySelectorAll('.recipe-card').forEach(c => c.classList.remove('active'));
-      if (!isOpen) card.classList.add('active');
-    }
-  </script>
 </body>
 </html>
