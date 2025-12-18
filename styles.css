@@ -1,0 +1,87 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background: #fff;
+}
+
+/* HEADER */
+header {
+  background: #8087d9;
+  color: white;
+  padding: 20px;
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.profile-pic {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  border: 3px solid white;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+/* RECIPES */
+.recipe-card {
+  border-bottom: 1px solid #ddd;
+}
+
+.recipe-header {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fdfdfd;
+}
+
+.recipe-header h2 {
+  color: #8087d9;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.toggle-icon::before {
+  content: '+';
+  font-weight: bold;
+  color: #8087d9;
+}
+
+.active .toggle-icon::before {
+  content: '−';
+}
+
+.recipe-content {
+  display: none;
+  padding: 10px;
+}
+
+.active .recipe-content {
+  display: block;
+}
+
+h4 {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #5a60a8;
+}
+
+ul {
+  margin: 0 0 10px 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+}
+
+.steps {
+  white-space: pre-line;
+  font-size: 0.9rem;
+}
