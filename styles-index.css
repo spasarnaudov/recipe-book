@@ -43,6 +43,35 @@ header h1 {
   #recipe-list {
     grid-template-columns: repeat(2, 1fr);
   }
+  
+  /* Site Title */
+  header h1 {
+    font-size: 2.2rem;
+  }
+
+  /* Grid Recipe Titles */
+  .recipe-preview h3 {
+    font-size: 1.2rem;
+    margin-top: 12px;
+  }
+
+  /* Accordion/Card Titles */
+  .recipe-header h2 {
+    font-size: 1.4rem;
+  }
+
+  /* Ingredients and Instructions */
+  ul, 
+  .steps, 
+  h4 {
+    font-size: 1.2rem;
+    line-height: 1.7; /* Extra spacing for readability */
+  }
+
+  /* Make the +/- icons easier to see */
+  .toggle-icon::before {
+    font-size: 1.6rem;
+  }
 }
 
 /* 💻 PC / Laptop → 4 columns */
