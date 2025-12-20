@@ -1,0 +1,74 @@
+/* ===== BASE ===== */
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background: #fff;
+  line-height: 1.5;
+}
+
+/* ===== HEADER ===== */
+header {
+  background: #8087d9;
+  color: white;
+  padding: 30px 20px;
+  display: flex;
+  align-items: flex-end;
+  gap: 25px;
+}
+
+.profile-pic {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  border: 4px solid white;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 3.5rem;
+  font-weight: 600;
+}
+
+/* ===== RECIPE LIST GRID ===== */
+#recipe-list {
+  display: grid;
+  gap: 24px;
+  padding: 24px;
+}
+
+/* 📱 Phones → 2 columns */
+@media (max-width: 768px) {
+  #recipe-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 💻 PC / Laptop → 4 columns */
+@media (min-width: 769px) {
+  #recipe-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ===== RECIPE PREVIEW CARDS ===== */
+.recipe-preview {
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+}
+
+.recipe-preview img {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* square */
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+}
+
+.recipe-preview h3 {
+  margin: 10px 0 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+}

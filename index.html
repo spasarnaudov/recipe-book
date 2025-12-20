@@ -2,24 +2,39 @@
 <html lang="bg">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Шеф Мими</title>
-
-  <!-- External CSS -->
-  <link rel="stylesheet" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles-index.css">
 </head>
-
 <body>
 
 <header>
-  <img src="mimi.jpg" alt="Mimi" class="profile-pic">
+  <img src="mimi.jpg" class="profile-pic" alt="Шеф Мими">
   <h1>Шеф Мими</h1>
 </header>
 
-<div id="recipe-container"></div>
+<div id="recipe-list" class="grid"></div>
 
-<!-- External JS -->
 <script src="recipes.js"></script>
+<script>
+  const list = document.getElementById("recipe-list");
+
+  recipes.forEach(recipe => {
+    const card = document.createElement("a");
+    card.className = "recipe-preview";
+    card.href = `recipe.html?id=${recipe.id}`;
+
+    card.innerHTML = `
+      <img src="${recipe.image}"
+           alt="${recipe.title}"
+           loading="lazy"
+           onerror="this.src='images/placeholder.svg'">
+      <h3>${recipe.title}</h3>
+    `;
+
+    list.appendChild(card);
+  });
+</script>
 
 </body>
 </html>

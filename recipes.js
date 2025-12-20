@@ -1,7 +1,9 @@
 const recipes = [
 
   {
+    id: "ketchup",
     title: "Кетчуп",
+    image: "images/placeholder.svg",
     sections: [
       {
         subtitle: "Продукти",
@@ -32,7 +34,9 @@ const recipes = [
   },
 
   {
+    id: "pancakes-marinated-pears",
     title: "Палачинки с мариновани круши",
+    image: "images/placeholder.svg",
     sections: [
       {
         subtitle: "Тесто",
@@ -40,11 +44,11 @@ const recipes = [
           "прясно мляко - 360 мл",
           "яйца - 3 бр",
           "захар - 40 гр",
-		  "сол - 2 гр",
-		  "масло - 85 гр",
+          "сол - 2 гр",
+          "масло - 85 гр",
           "брашно - 175 гр",
           "коняк - 10 мл",
-		  "ванилия (есенция)"
+          "ванилия (есенция)"
         ]
       },
       {
@@ -69,17 +73,19 @@ const recipes = [
       "в топлата марина от предвидените продукти (мариноват се със захар).\n" +
       "Приготвяне на рядко палачинково тесто от предвидените продукти.\n" +
       "Прецеждане. Изпържване на палачинки. Оформяне на палачинките\n" +
-	  "с плънката и завързване с портокалова кора.\n\n" +
-	  "!!! Може да се подготви канапе от сирена:\n" +
-	  "- сирене Бри или Камембер 75 гр\n" +
-	  "- Крема сирене 50 гр\n" +
-	  "- сметана животинска 50 гр\n" +
-	  "- пудра захар 25 гр\n" + 
-	  "Пасира се"
+      "с плънката и завързване с портокалова кора.\n\n" +
+      "!!! Може да се подготви канапе от сирена:\n" +
+      "- сирене Бри или Камембер 75 гр\n" +
+      "- Крема сирене 50 гр\n" +
+      "- сметана животинска 50 гр\n" +
+      "- пудра захар 25 гр\n" +
+      "Пасира се"
   },
 
   {
+    id: "truffles-caramel",
     title: "Трюфели с дъх на карамел",
+    image: "images/placeholder.svg",
     sections: [
       {
         subtitle: "За карамела",
@@ -107,7 +113,9 @@ const recipes = [
   },
 
   {
+    id: "truffles-coffee",
     title: "Трюфели с дъх на кафе",
+    image: "images/placeholder.svg",
     sections: [
       {
         subtitle: "За редукцията",
@@ -135,7 +143,9 @@ const recipes = [
   },
 
   {
+    id: "saint-honore-cake",
     title: "Торта „Сен Оноре“",
+    image: "images/placeholder.svg",
     sections: [
       {
         subtitle: "Рецепта",
@@ -164,7 +174,9 @@ const recipes = [
   },
 
   {
+    id: "brownies-raspberry-mousse",
     title: "Шоколадов браунис с малинов мус",
+    image: "images/placeholder.svg",
     sections: [
       {
         subtitle: "Браунис",
@@ -196,7 +208,9 @@ const recipes = [
   },
 
   {
+    id: "sponge-cake-layers",
     title: "Пандишпанови блатове",
+    image: "images/placeholder.svg",
     sections: [
       {
         subtitle: "Продукти",
@@ -215,7 +229,9 @@ const recipes = [
   },
 
   {
+    id: "chocolate-souffle",
     title: "Шоколадово суфле",
+    image: "images/placeholder.svg",
     sections: [
       {
         subtitle: "Продукти за 10 порции",
@@ -245,46 +261,3 @@ const recipes = [
   }
 
 ];
-
-// ---------------- LOGIC ----------------
-
-const container = document.getElementById("recipe-container");
-
-recipes.forEach(recipe => {
-  const card = document.createElement("div");
-  card.className = "recipe-card";
-
-  const sectionsHtml = recipe.sections.map(section => `
-    <h4>${section.subtitle}:</h4>
-    <ul>
-      ${section.items.map(item => `<li>${item}</li>`).join("")}
-    </ul>
-  `).join("");
-
-  card.innerHTML = `
-    <div class="recipe-header" onclick="toggleRecipe(this)">
-      <h2>${recipe.title}</h2>
-      <span class="toggle-icon"></span>
-    </div>
-    <div class="recipe-content">
-      ${sectionsHtml}
-      <h4>Начин на приготвяне:</h4>
-      <p class="steps">${recipe.steps}</p>
-    </div>
-  `;
-
-  container.appendChild(card);
-});
-
-function toggleRecipe(header) {
-  const card = header.parentElement;
-  const isOpen = card.classList.contains("active");
-
-  document.querySelectorAll(".recipe-card")
-    .forEach(c => c.classList.remove("active"));
-
-  if (!isOpen) {
-    card.classList.add("active");
-  }
-}
-

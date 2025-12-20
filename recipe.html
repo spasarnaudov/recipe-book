@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <title>Рецепта</title>
+  <link rel="stylesheet" href="styles-recipe.css">
+</head>
+<body>
+
+<header>
+  <img src="mimi.jpg" class="profile-pic" alt="Шеф Мими">
+  <h1>Шеф Мими</h1>
+</header>
+
+<div id="recipe-container"></div>
+
+<script src="recipes.js"></script>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const recipeId = params.get("id");
+
+  const recipe = recipes.find(r => r.id === recipeId);
+  const container = document.getElementById("recipe-container");
+
+  if (!recipe) {
+    container.innerHTML = "<p>Рецептата не е намерена.</p>";
+  } else {
+
+    const sectionsHtml = recipe.sections.map(section => `
+      <h4>${section.subtitle}</h4>
+      <ul>
+        ${section.items.map(i => `<li>${i}</li>`).join("")}
+      </ul>
+    `).join("");
+
+    container.innerHTML = `
+      <h1>${recipe.title}</h1>
+      <img src="${recipe.image}" class="recipe-image">
+      ${sectionsHtml}
+      <h4>Начин на приготвяне</h4>
+      <p class="steps">${recipe.steps.replace(/\n/g, "<br>")}</p>
+    `;
+  }
+</script>
+
+</body>
+</html>
