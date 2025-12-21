@@ -3,7 +3,7 @@ const recipes = [
   {
     id: "ketchup",
     title: "Кетчуп",
-    image: "images/placeholder.svg",
+    image: "images/ketchup.jpg",
     sections: [
       {
         subtitle: "Продукти",
@@ -36,7 +36,7 @@ const recipes = [
   {
     id: "pancakes-marinated-pears",
     title: "Палачинки с мариновани круши",
-    image: "images/placeholder.svg",
+    image: "images/pancakes-marinated-pears.jpg",
     sections: [
       {
         subtitle: "Тесто",
@@ -85,7 +85,7 @@ const recipes = [
   {
     id: "truffles-caramel",
     title: "Трюфели с дъх на карамел",
-    image: "images/placeholder.svg",
+    image: "images/truffles-caramel.jpg",
     sections: [
       {
         subtitle: "За карамела",
@@ -115,7 +115,7 @@ const recipes = [
   {
     id: "truffles-coffee",
     title: "Трюфели с дъх на кафе",
-    image: "images/placeholder.svg",
+    image: "images/truffles-coffee.webp",
     sections: [
       {
         subtitle: "За редукцията",
@@ -145,7 +145,7 @@ const recipes = [
   {
     id: "saint-honore-cake",
     title: "Торта „Сен Оноре“",
-    image: "images/placeholder.svg",
+    image: "images/saint-honore-cake.jpg",
     sections: [
       {
         subtitle: "Рецепта",
@@ -176,7 +176,7 @@ const recipes = [
   {
     id: "brownies-raspberry-mousse",
     title: "Шоколадов браунис с малинов мус",
-    image: "images/placeholder.svg",
+    image: "images/brownies-raspberry-mousse.jpg",
     sections: [
       {
         subtitle: "Браунис",
@@ -210,7 +210,7 @@ const recipes = [
   {
     id: "sponge-cake-layers",
     title: "Пандишпанови блатове",
-    image: "images/placeholder.svg",
+    image: "images/sponge-cake-layers.jpg",
     sections: [
       {
         subtitle: "Продукти",
@@ -231,7 +231,7 @@ const recipes = [
   {
     id: "chocolate-souffle",
     title: "Шоколадово суфле",
-    image: "images/placeholder.svg",
+    image: "images/chocolate-souffle.jpeg",
     sections: [
       {
         subtitle: "Продукти за 10 порции",

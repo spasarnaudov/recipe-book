@@ -93,7 +93,7 @@ header h1 {
 }
 
 .recipe-preview img {
-  width: 100%;
+  width: 120px;
   aspect-ratio: 1 / 1;       /* square */
   object-fit: cover;
   border-radius: 14px;       /* slightly bigger corners */
