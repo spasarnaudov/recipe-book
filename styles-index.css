@@ -31,6 +31,30 @@ header h1 {
   font-weight: 600;
 }
 
+.search-bar {
+  display: flex;
+  align-items: center; /* Aligns items vertically in the middle */
+}
+
+button {
+  margin-left: 10px; /* Adds some space to the left of the button */
+  padding: 10px 20px; /* Adjusts padding inside the button for better appearance */
+  border: none; /* Removes default border from the button */
+  background-color: #8087d9; /* Sets a background color for the button */
+  color: white; /* Text color on the button */
+  cursor: pointer; /* Changes the mouse cursor to a pointer when hovering over the button */
+  margin-top: 30px;
+}
+
+#searchInput {
+  width: 300px; /* Sets a fixed width for the input field */
+  padding: 10px; /* Adds some padding inside the input field */
+  border: 2px solid #ccc; /* Adds a border around the input field */
+  border-radius: 5px; /* Rounds the corners of the input field */
+  margin-left: 30px;
+  margin-top: 30px;
+}
+
 /* ===== RECIPE LIST GRID ===== */
 #recipe-list {
   display: grid;

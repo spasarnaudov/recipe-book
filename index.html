@@ -6,34 +6,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-
 <header>
   <img src="mimi.jpg" class="profile-pic" alt="Шеф Мими">
   <h1>Шеф Мими</h1>
 </header>
-
+<div class="search-bar">
+  <input type="text" id="searchInput" placeholder="Търси рецепта..." oninput="searchRecipes()">
+  <button onclick="clearAndSearch()">Изчисти</button>
+</div>
 <div id="recipe-list" class="grid"></div>
-
 <script src="recipes.js"></script>
 <script>
   const list = document.getElementById("recipe-list");
+  
+  // Function to display all recipes initially
+  function displayRecipes(recipes) {
+    list.innerHTML = ""; // Clear previous results
+    recipes.forEach(recipe => {
+      const card = document.createElement("a");
+      card.className = "recipe-preview";
+      card.href = `recipe.html?id=${recipe.id}`;
+      card.innerHTML = `
+        <img src="${recipe.image}" alt="${recipe.title}" loading="lazy" onerror="this.src='images/placeholder.svg'">
+        <h3>${recipe.title}</h3>
+      `;
+      list.appendChild(card);
+    });
+  }
+  
+  // Display all recipes initially
+  displayRecipes(recipes);
 
-  recipes.forEach(recipe => {
-    const card = document.createElement("a");
-    card.className = "recipe-preview";
-    card.href = `recipe.html?id=${recipe.id}`;
-
-    card.innerHTML = `
-      <img src="${recipe.image}"
-           alt="${recipe.title}"
-           loading="lazy"
-           onerror="this.src='images/placeholder.svg'">
-      <h3>${recipe.title}</h3>
-    `;
-
-    list.appendChild(card);
-  });
+  // Function to search for recipes based on user input
+  function searchRecipes() {
+    const query = document.getElementById("searchInput").value.toLowerCase();
+    const filteredRecipes = recipes.filter(recipe => recipe.title.toLowerCase().includes(query));
+    
+    displayRecipes(filteredRecipes);
+  }
+  
+  function clearAndSearch() {
+    document.getElementById("searchInput").value = ""; // Clear the input field
+    searchRecipes(); // Call the filtering function to update the displayed recipes
+  }
 </script>
-
 </body>
 </html>
